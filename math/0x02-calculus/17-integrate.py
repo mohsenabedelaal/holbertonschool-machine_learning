@@ -1,24 +1,21 @@
 #!/usr/bin/env python3
-"""derivative poly"""
+"""
+17-integrate.py
+"""
 
 
 def poly_integral(poly, C=0):
-    """Module for integral"""
-    if not isinstance(poly, list) or type(C) != int:
+    """
+    Module integral
+    """
+    if type(poly) != list or len(poly) == 0 or type(C) != int:
         return None
+    result = [C]
     if len(poly) == 0:
-        return None
-    else:
-        integral = []
-        for i in range(0, len(poly)):
-            if isinstance(poly[i], (int, float)):
-                if i == 0:
-                    integral.append(C)
-                if poly[i] % (i + 1) == 0:
-                    result = int((1/(i+1)) * poly[i])
-                else:
-                    result = (1/(i+1)) * poly[i]
-                integral.append(result)
-            else:
-                return None
-        return integral
+        return result
+    for i in range(0, len(poly)):
+        add = poly[i] / (i+1)
+        if add.is_integer():
+            add = int(add)
+        result.append(add)
+    return result
