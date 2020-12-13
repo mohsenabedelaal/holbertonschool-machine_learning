@@ -8,10 +8,6 @@ def poly_integral(poly, C=0):
         return None
     if len(poly) == 0:
         return None
-    if len(poly) == 1:
-        return [0]
-    if len(poly) == 2:
-        return [poly(1)]
     else:
         integral = []
         for i in range(0, len(poly)):
