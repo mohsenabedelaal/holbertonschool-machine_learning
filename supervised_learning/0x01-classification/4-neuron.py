@@ -45,6 +45,7 @@ class Neuron:
 
     def evaluate(self, X, Y):
         """Evaluate neuron"""
-        A = np.ndarray((1, X.shape[1]))
-        A[0] = self.forwrad_prop(X)
-        return np.round(A).astype(int), self.cost(Y, A)
+        A = self.forward_prop(X)
+        cost = self.cost(Y, A)
+        A = np.where(A >= 0.5, 1, 0)
+        return A, cost
