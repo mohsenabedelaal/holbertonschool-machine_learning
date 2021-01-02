@@ -1,4 +1,4 @@
-#ython3
+#!/usr/bin/env python3
 """ Module to Create a neuron
 """
 import numpy as np
@@ -34,7 +34,5 @@ class Neuron:
     def forward_prop(self, X):
         """forward_prop function"""
         ax = np.dot(self.__W, X) + self.__b
-        # print(ax.shape)
         self.__A = 1.0 / (1.0 + np.exp(-ax))
-        # print(self.__A.shape)
         return self.__A
