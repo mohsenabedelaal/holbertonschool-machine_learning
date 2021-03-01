@@ -39,12 +39,12 @@ class NST:
             beta - the weight for style cost
         """
         if (not isinstance(style_image, np.ndarray) or
-           len(style_image.shape) != 3 or style_image.shape[2] != 3):
+                len(style_image.shape) != 3 or style_image.shape[2] != 3):
             msg = "style_image must be a numpy.ndarray with shape (h, w, 3)"
             raise TypeError(msg)
 
         if (not isinstance(content_image, np.ndarray) or
-           len(content_image.shape) != 3 or content_image.shape[2] != 3):
+                len(content_image.shape) != 3 or content_image.shape[2] != 3):
             msg = "content_image must be a numpy.ndarray with shape (h, w, 3)"
             raise TypeError(msg)
 
@@ -66,7 +66,7 @@ class NST:
         0 and 1 and its largest side is 512 pixels """
 
         if (not isinstance(image, np.ndarray) or
-           len(image.shape) != 3 or image.shape[2] != 3):
+                len(image.shape) != 3 or image.shape[2] != 3):
             msg = "image must be a numpy.ndarray with shape (h, w, 3)"
             raise TypeError(msg)
 
@@ -110,7 +110,7 @@ class NST:
     def gram_matrix(input_layer):
         """ calculates gram matrices """
         if (not isinstance(input_layer, (tf.Tensor, tf.Variable)) or
-           len(input_layer.shape) != 4):
+                len(input_layer.shape) != 4):
             raise TypeError("input_layer must be a tensor of rank 4")
         channels = int(input_layer.shape[-1])
         a = tf.reshape(input_layer, [-1, channels])
@@ -138,11 +138,11 @@ class NST:
         """ calculate the style cost for a single layer """
 
         if (not isinstance(style_output, (tf.Tensor, tf.Variable)) or
-           len(style_output.shape) != 4):
+                len(style_output.shape) != 4):
             raise TypeError("style_output must be a tensor of rank 4")
         c = int(style_output.shape[-1])
         if (not isinstance(gram_target, (tf.Tensor, tf.Variable)) or
-           gram_target.shape != (1, c, c)):
+                gram_target.shape != (1, c, c)):
             m = ("gram_target must be a tensor of shape [1, {}, {}]"
                  .format(c, c))
             raise TypeError(m)
@@ -154,7 +154,7 @@ class NST:
     def style_cost(self, style_outputs):
         """  calculate the style cost """
         if (not type(style_outputs) is list
-           or len(self.style_layers) != len(style_outputs)):
+                or len(self.style_layers) != len(style_outputs)):
             le = len(self.style_layers)
             m = "style_outputs must be a list with a length of {}".format(le)
             raise TypeError(m)
