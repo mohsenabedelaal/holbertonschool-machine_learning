@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-""" Calcuoate normalization constants for matrix"""
 
+"""
+calculates the normalization constants
+"""
 
 import numpy as np
 
 
 def normalization_constants(X):
-    """ Calculates normalization constants for matrix """
-    return X.mean(axis=0), X.std(axis=0)
+    """Returns: the mean and standard deviation"""
+    mean = np.mean(X, axis=0)
+    stdev = np.std(X, axis=0)
+    return mean, stdev
