@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
-Calculates the normalization
+Calculates the normalization (standardization) constants of a matrix
 """
 import numpy as np
+import statistics
 
 
 def normalization_constants(X):
     """
-    a function that calculates the normalization (standardization) constants
-    of a matrix
+    Returns: the mean and variance of each feature
     """
-    return np.mean(X, axis=0), np.std(X, axis=0)
+    """ mean of each column """
+    mean = np.mean(X, axis=0)
+    variance = np.mean((X-mean)**2, axis=0)
+    
+    return mean, variance
